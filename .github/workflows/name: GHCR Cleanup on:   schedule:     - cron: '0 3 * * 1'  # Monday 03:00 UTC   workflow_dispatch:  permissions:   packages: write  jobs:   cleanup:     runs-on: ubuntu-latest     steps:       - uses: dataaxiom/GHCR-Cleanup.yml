@@ -1,0 +1,22 @@
+name: GHCR Cleanup
+on:
+  schedule:
+    - cron: '0 3 * * 1'  # Monday 03:00 UTC
+  workflow_dispatch:
+
+permissions:
+  packages: write
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: dataaxiom/ghcr-cleanup-action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          owner: prototypeactual
+          package-name: cadt-fg
+          older-than-days: 60
+          keep-n-tagged: 10
+          delete-untagged: true
+          dry-run: true
