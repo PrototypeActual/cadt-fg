@@ -15,7 +15,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           package: cadt-fg
-          older-than: 60
+          older-than: 31 days
           keep-n-tagged: 30
           delete-untagged: true
           dry-run: true
